@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="view_connector_base_external_dbsource_backend_form" model="ir.ui.view">
+      <field name="name">dbsource.backend.form</field>
+      <field name="model">dbsource.backend</field>
+      <field name="arch" type="xml">
+        <form string="External DbSource Backend" version="7.0">
+          <sheet>
+            <label for="name" class="oe_edit_only"/>
+            <h1>
+              <field name="name" class="oe_inline"/>
+            </h1>
+            <group>
+              <field name="version" />
+              <field name="dbsource_id" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_connector_base_external_dbsource_backend_tree" model="ir.ui.view">
+      <field name="name">dbsource.backend.tree</field>
+      <field name="model">dbsource.backend</field>
+      <field name="arch" type="xml">
+        <tree string="External DbSource Backend" version="7.0">
+          <field name="name"/>
+          <field name="dbsource_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_connector_base_external_dbsource_backend" model="ir.actions.act_window">
+      <field name="name">External DbSource Backend</field>
+      <field name="res_model">dbsource.backend</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_connector_base_external_dbsource_backend_tree"/>
+    </record>
+
+    <menuitem id="menu_connector_base_external_dbsource_root"
+        parent="connector.menu_connector_root"
+        name="Connector External DbSource"
+        sequence="10"/>
+
+    <menuitem id="menu_connector_base_external_dbsource_backend"
+        name="Backends"
+        parent="menu_connector_base_external_dbsource_root"
+        action="action_connector_base_external_dbsource_backend"/>
+
+  </data>
+</openerp>
